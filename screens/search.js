@@ -4,7 +4,7 @@ function Search(){
     return(
         <View>
             <Text>
-                kenan gotdu
+                Search components
             </Text>
         </View>
     )
