@@ -3,13 +3,14 @@ import stories from "../../../data/stories";
 import { LinearGradient } from 'expo-linear-gradient';
 import { TouchableOpacity } from "react-native";
 import { useNavigation } from "@react-navigation/native"
+import {useState} from 'react';
 
-function Stories() {
+import {statusData} from "./../../../data/statusdata"
+import Status from "./Status";
 
-    const navigation = useNavigation();
-    const sendSubmit = () =>{
-        navigation.navigate('Status');
-    }
+function Stories({profile}) {
+
+    const [visible, setVisible] = useState(false)
     return(
         <View
             style={styles.stories}
@@ -19,8 +20,11 @@ function Stories() {
                 showsHorizontalScrollIndicator={false}
             >
             {
-                stories.map(story =>(
-                    <TouchableOpacity key={story.id} activeOpacity={"0.7"} onPress={sendSubmit}>
+                stories.map((story) =>(
+                    <>
+                    <TouchableOpacity key={story.id} profile={profile} activeOpacity={"0.7"} onPress={()=>{
+                        setVisible(true);
+                    }}>
                         <View style={styles.story}>
                             <LinearGradient
                                 colors={['#DE0046', '#F7A34B']}
@@ -36,8 +40,12 @@ function Stories() {
                             <Text style={styles.username} numberOfLines={1}>{story.user.name}</Text>     
                         </View>
                     </TouchableOpacity>        
+                    {visible && <Status statusData={story.statusData} visible={visible} onClose={()=> setVisible(false)}/>}
+                    </>
                 ))
+                
             }
+            
         </ScrollView>
         </View>
     )

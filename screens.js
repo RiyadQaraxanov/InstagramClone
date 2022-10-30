@@ -118,7 +118,6 @@ function Screens() {
             >
                 <Stack.Screen name="Bottom" component={bottomTabScreen}/>
                 <Stack.Screen name="Direct" component={Direct}/>
-                <Stack.Screen name="Status" component={Status}/>
             </Stack.Navigator>
         </NavigationContainer>
     ) 
