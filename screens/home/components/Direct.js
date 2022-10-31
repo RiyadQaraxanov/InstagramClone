@@ -5,8 +5,13 @@ import User from "./../../../data/user"
 import Screens from '../../../screens'
 import { useNavigation } from "@react-navigation/native"
 import { LinearGradient } from 'expo-linear-gradient';
+import dayjs from "dayjs";
+import relativeTime from "dayjs/plugin/relativeTime";
 
 import Chats from "../../../data/chats"
+
+dayjs.extend(relativeTime)
+
 
 function Direct({chat}) {
   const navigation = useNavigation();
@@ -50,12 +55,18 @@ function Direct({chat}) {
                 {direct.read==false ?(
                   <View>
                     <Text style={{fontWeight:"700"}}>{direct.name}</Text>
-                    <Text style={{fontWeight:"700"}}>{direct.message}</Text>
+                    <View style={{flexDirection:"row",alignItems:"center"}}>
+                      <Text style={{fontWeight:"700"}}>{direct.message}</Text>
+                      <Text style={{fontSize:14, opacity:0.4}}> · {dayjs(direct.time).fromNow()}</Text>
+                    </View>
                   </View>
                 ):
                   <View>
                     <Text style={{}}>{direct.name}</Text>
-                    <Text>{direct.message}</Text>
+                    <View style={{flexDirection:"row",alignItems:"center"}}>
+                      <Text style={{}}>{direct.message}</Text>
+                      <Text style={{fontSize:14, opacity:0.4}}> · {dayjs(direct.time).fromNow()}</Text>
+                    </View>
                   </View>
                 }
               </View>
