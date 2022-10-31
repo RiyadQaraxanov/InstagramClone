@@ -1,15 +1,17 @@
-import { View, Text, TouchableOpacity, ScrollView, TextInput } from 'react-native'
+import { View, Text, TouchableOpacity, ScrollView, TextInput, Image } from 'react-native'
 import React from 'react'
-import {AddChat,BackArrow,Search} from './../../../icons'
+import {AddChat,BackArrow,Search,Play,Picture} from './../../../icons'
 import User from "./../../../data/user"
 import Screens from '../../../screens'
 import { useNavigation } from "@react-navigation/native"
+import { LinearGradient } from 'expo-linear-gradient';
 
+import Chats from "../../../data/chats"
 
-
-function Direct() {
+function Direct({chat}) {
   const navigation = useNavigation();
 
+  
   
   return(
     <>
@@ -27,7 +29,7 @@ function Direct() {
       <ScrollView style={{backgroundColor:"white",paddingHorizontal:12}}>
         <View style={{alignItems:"center",flexDirection:"row",justifyContent:"space-between",height:40}}>
           <Text style={{fontWeight:"600"}}>
-            Mesajlar
+            Messages
           </Text>
           <TouchableOpacity activeOpacity={"0.7"}>
             <Text style={{opacity:"0.5"}}>Istekler</Text>
@@ -38,6 +40,84 @@ function Direct() {
           <TextInput placeholder={`Search`} placeholderTextColor={"#3C3C43"} style={{color:"#3C3C43",marginLeft:5,backgroundColor:"#EAEAFC",width:'95%'}}>
           </TextInput>
         </View>
+         {Chats.map((direct) =>{
+          return(
+          <>
+          <View key={direct.id}> 
+            <Image style={{width:56,height:56}} source={{uri: direct.avatar}}/>
+            <View>
+              {direct.read==false ?(
+                <View>
+                  <Text style={{fontWeight:"700"}}>{direct.name}</Text>
+                  <Text style={{fontWeight:"700"}}>{direct.message}</Text>
+                </View>
+              ):
+                <View>
+                  <Text style={{}}>{direct.name}</Text>
+                  <Text>{direct.message}</Text>
+                </View>
+              }
+              <View>
+                {
+                  direct.read==false ?(
+                    <>
+                    {direct.sendPhoto == false ?(
+                      <View
+                        style={{
+                          flexDirection:"row",
+                          alignItems:"center",
+                          justifyContent:"center"
+                        }}
+                      >
+                        <View
+                          style={{
+                            width:8,
+                            height:8,
+                            borderRadius:8,
+                            backgroundColor:"red",
+                            marginRight:15
+                          }}
+                        ></View>
+                        <Picture />
+                      </View>
+                    ): 
+                      <>
+                        <LinearGradient 
+                          colors={["#378DEF","#6FC7FC"]}
+                          style={{
+                            width:29,
+                            height:29,
+                            backgroundColor:"cyan",
+                            justifyContent: "center",
+                            alignItems: "center",
+                            display:"flex",
+                            borderRadius: 29,
+                            paddingLeft:2,
+                            paddingTop:-2
+                          }}>
+                          <Play fill={"white"}/>
+                        </LinearGradient>
+                      </>
+                    }
+                    </>
+                  ):
+                  <>
+                    <View
+                          style={{
+                            width:5,
+                            height:5,
+                            backgroundColor:"red"
+                          }}
+                        ></View>
+                    <Picture />
+                  </>
+                }
+              </View>
+            </View>
+            <View></View>
+          </View> 
+          </> )
+         })}
       </ScrollView>
     </>
   )

@@ -18,7 +18,7 @@ export default [
         }
     },
     {
-        id:0,
+        id:1,
         description: 'You must run the command in the directory (folder) where the dependency is located. I will be using Nodemon to demonstrate how to remove a dev dependency. Nodemon lets your NodeJS app reload automatically any time it detects a change in a file or folder during development. In the screenshot below, you can see that Nodemon is listed as a dev dependency.',
         date: '2022-5-26 10:00:00',
         likes: '1,694',
@@ -37,7 +37,7 @@ export default [
         }
     },
     {
-        id:0,
+        id:2,
         description: 'You must run the command in the directory (folder) where the dependency is located. I will be using Nodemon to demonstrate how to remove a dev dependency. Nodemon lets your NodeJS app reload automatically any time it detects a change in a file or folder during development. In the screenshot below, you can see that Nodemon is listed as a dev dependency.',
         date: '2022-5-26 10:00:00',
         likes: '9,465',
