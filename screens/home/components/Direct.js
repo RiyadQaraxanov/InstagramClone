@@ -47,16 +47,55 @@ function Direct({chat}) {
         </View>
          {Chats.map((direct) =>{
           return(
-          <>
-          <View key={direct.id} style={{marginTop:15,flexDirection:"row"}}> 
-            <Image style={{width:56,height:56}} source={{uri: direct.avatar}}/>
+          <TouchableOpacity>
+          <View key={direct.id} style={{marginTop:10,flexDirection:"row"}}>
+              {direct.status==true ?(
+                <LinearGradient
+                  colors={['#DE0046', '#F7A34B']}
+                  style={{width:60,
+                    height:60,
+                    borderRadius:33.5,
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    marginBottom:5}}
+                  >
+                  <Image 
+                      style={{width:56,height:56,borderRadius:56,
+                        borderWidth:2,
+                        borderColor:'#fff'}}
+                      source={{
+                          uri: direct.avatar
+                      }}
+                  />
+                </LinearGradient>
+              ):
+              <LinearGradient
+                  colors={['#fff', '#fff']}
+                  style={{width:60,
+                    height:60,
+                    borderRadius:33.5,
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    marginBottom:5}}
+                  >
+                  <Image 
+                      style={{width:56,height:56,borderRadius:56,
+                        borderWidth:2,
+                        borderColor:'#fff'}}
+                      source={{
+                          uri: direct.avatar
+                      }}
+                  />
+                </LinearGradient>
+              
+              }     
             <View style={{flexDirection:"row",justifyContent:"space-between",alignItems:"center",width:"90%"}}>
               <View style={{paddingLeft:10}}>
                 {direct.read==false ?(
                   <View>
                     <Text style={{fontWeight:"700"}}>{direct.name}</Text>
                     <View style={{flexDirection:"row",alignItems:"center"}}>
-                      <Text style={{fontWeight:"700"}}>{direct.message}</Text>
+                      <Text  style={{fontWeight:"700"}}>{direct.message}</Text>
                       <Text style={{fontSize:14, opacity:0.4}}> · {dayjs(direct.time).fromNow()}</Text>
                     </View>
                   </View>
@@ -106,7 +145,8 @@ function Direct({chat}) {
                             display:"flex",
                             borderRadius: 29,
                             paddingLeft:2,
-                            paddingTop:-2
+                            paddingTop:-2,
+                            marginRight:3
                           }}>
                           <Play fill={"white"}/>
                         </LinearGradient>
@@ -129,7 +169,7 @@ function Direct({chat}) {
             </View>
             <View></View>
           </View> 
-          </> )
+          </TouchableOpacity> )
          })}
       </ScrollView>
     </>

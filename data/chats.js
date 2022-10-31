@@ -10,7 +10,9 @@ export default [
         name:"instagram",
         message: "2 yeni mesaj",
         time: '2022-5-26 10:00:00',
-        read: true
+        read: true,
+        sendPhoto: true,
+        status: true
     },
     {
         id:1,
@@ -18,7 +20,9 @@ export default [
         name:"twitter",
         message: "2 yeni mesaj",
         time: '2022-5-26 10:00:00',
-        read: false
+        read: false,
+        sendPhoto: true,
+        status: false
     },
     {
         id:2,
@@ -27,7 +31,8 @@ export default [
         message: "2 yeni mesaj",
         time: '2022-5-26 10:00:00',
         read: true,
-        sendPhoto: true
+        sendPhoto: true,
+        status: false
     },
     {
         id:3,
@@ -36,7 +41,8 @@ export default [
         message: "2 yeni mesaj",
         time: '2022-5-26 10:00:00',
         read: true,
-        sendPhoto: true
+        sendPhoto: true,
+        status: false
     },
     {
         id:4,
@@ -45,16 +51,18 @@ export default [
         message: "2 yeni mesaj",
         time: '2022-5-26 10:00:00',
         read: true,
-        sendPhoto: true
+        sendPhoto: true,
+        status: false
     },
     {
         id:5,
         avatar: 'https://lh3.googleusercontent.com/a/ALm5wu1UbrWYSHaCFseEEyci05hYsxPgWXK6MH-uDMBmtg=s96-c-rg-br100',
         name:"snapchat",
-        message: "2 yeni mesaj",
+        message: "ipsum",
         time: '2022-5-26 10:00:00',
         read: true,
-        sendPhoto: true
+        sendPhoto: true,
+        status: true
     },
     {
         id:6,
@@ -63,16 +71,18 @@ export default [
         message: "2 yeni mesaj",
         time: '2022-5-26 10:00:00',
         read: false,
-        sendPhoto: false
+        sendPhoto: false,
+        status: false
     },
     {
         id:7,
         avatar: 'https://lh3.googleusercontent.com/a/ALm5wu1UbrWYSHaCFseEEyci05hYsxPgWXK6MH-uDMBmtg=s96-c-rg-br100',
         name:"react",
-        message: "2 yeni mesaj",
+        message: "lorem",
         time: '2022-5-26 10:00:00',
         read: true,
-        sendPhoto: true
+        sendPhoto: true,
+        status: true
     },
     {
         id:8,
@@ -81,7 +91,8 @@ export default [
         message: "2 yeni mesaj",
         time: '2022-5-26 10:00:00',
         read: false,
-        sendPhoto: false
+        sendPhoto: false,
+        status: false
     },
     {
         id:9,
@@ -90,7 +101,8 @@ export default [
         message: "2 yeni mesaj",
         time: '2022-5-26 10:00:00',
         read: true,
-        sendPhoto: true
+        sendPhoto: true,
+        status: true
     },
     {
         id:10,
@@ -99,6 +111,7 @@ export default [
         message: "2 yeni mesaj",
         time: '2022-5-26 10:00:00',
         read: true,
-        sendPhoto: true
+        sendPhoto: true,
+        status: true
     },
 ]
