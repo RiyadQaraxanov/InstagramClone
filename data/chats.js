@@ -62,8 +62,8 @@ export default [
         name:"telegram",
         message: "2 yeni mesaj",
         time: '2022-5-26 10:00:00',
-        read: true,
-        sendPhoto: true
+        read: false,
+        sendPhoto: false
     },
     {
         id:7,

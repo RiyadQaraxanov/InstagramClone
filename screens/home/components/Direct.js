@@ -43,21 +43,23 @@ function Direct({chat}) {
          {Chats.map((direct) =>{
           return(
           <>
-          <View key={direct.id}> 
+          <View key={direct.id} style={{marginTop:15,flexDirection:"row"}}> 
             <Image style={{width:56,height:56}} source={{uri: direct.avatar}}/>
-            <View>
-              {direct.read==false ?(
-                <View>
-                  <Text style={{fontWeight:"700"}}>{direct.name}</Text>
-                  <Text style={{fontWeight:"700"}}>{direct.message}</Text>
-                </View>
-              ):
-                <View>
-                  <Text style={{}}>{direct.name}</Text>
-                  <Text>{direct.message}</Text>
-                </View>
-              }
-              <View>
+            <View style={{flexDirection:"row",justifyContent:"space-between",alignItems:"center",width:"90%"}}>
+              <View style={{paddingLeft:10}}>
+                {direct.read==false ?(
+                  <View>
+                    <Text style={{fontWeight:"700"}}>{direct.name}</Text>
+                    <Text style={{fontWeight:"700"}}>{direct.message}</Text>
+                  </View>
+                ):
+                  <View>
+                    <Text style={{}}>{direct.name}</Text>
+                    <Text>{direct.message}</Text>
+                  </View>
+                }
+              </View>
+              <View style={{paddingRight:12}}>
                 {
                   direct.read==false ?(
                     <>
@@ -74,7 +76,7 @@ function Direct({chat}) {
                             width:8,
                             height:8,
                             borderRadius:8,
-                            backgroundColor:"red",
+                            backgroundColor:"#378DEF",
                             marginRight:15
                           }}
                         ></View>
@@ -101,16 +103,16 @@ function Direct({chat}) {
                     }
                     </>
                   ):
-                  <>
-                    <View
-                          style={{
-                            width:5,
-                            height:5,
-                            backgroundColor:"red"
-                          }}
-                        ></View>
-                    <Picture />
-                  </>
+                  <View
+                  style={{
+                    flexDirection:"row",
+                    alignItems:"center",
+                    justifyContent:"center"
+                  }}
+                  >
+                    
+                    <Picture style={{opacity:"0.7"}}/>
+                  </View>
                 }
               </View>
             </View>
