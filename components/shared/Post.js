@@ -1,10 +1,14 @@
-import { View, Text, Image, StyleSheet, TouchableOpacity, ScrollView } from "react-native";
+import { View, Text, Image, StyleSheet, TouchableOpacity, ScrollView, Dimensions } from "react-native";
+import Animated, {Easing,useAnimatedStyle,useSharedValue,withDelay,withTiming} from "react-native-reanimated"
 import { BookMark, More, Like, Comment, Share, LikeFilled } from "../../icons";
 import ReadMore from '@fawazahmed/react-native-read-more';
 import FitImage from "./FitImage";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
-
+import {useState} from 'react';
+import AntDesign from "react-native-vector-icons/AntDesign"
+import Ionic from "react-native-vector-icons/Ionicons"
+import { TapGestureHandler } from "react-native-gesture-handler"
 dayjs.extend(relativeTime)
 
 // function time({post}){
@@ -13,6 +17,43 @@ dayjs.extend(relativeTime)
 // }
 
 function Post({post}) {
+    
+    const isLiked = useSharedValue(false);
+    const scale = useSharedValue(0);
+
+    const style = useAnimatedStyle(()=>{
+        return{
+            transform: [{scale: scale.value}]
+        }
+    })
+
+    const likeAnimation = ()=>{
+        isLiked.value = true;
+        scale.value = withTiming(
+            1,
+            {
+                duration: 200,
+                easing: Easing.bezier(0.68, 0, 0.32, 1.6),
+            },
+            (isFinished)=>{
+                if(isFinished){
+                    scale.value = withDelay(
+                        500,
+                        withTiming(0, {
+                            easing: Easing.bezier(1, 0, 0, 1),
+                        })
+                    )
+                }
+            }
+        )
+        
+        if(post.isLiked===false) {setLike(!like)
+        post.isLiked=true
+        }
+        console.log(postHeight)
+    }
+
+    const [like,setLike] = useState(post.isLiked)
     return(
         <View style={{marginBottom:15}}>
             <View style={styles.header}>
@@ -30,13 +71,49 @@ function Post({post}) {
             {/* <FitImage src={post.image} /> */}
             <ScrollView style={{flexDirection:'row'}} horizontal={true}>
             {post.medias.map(media =>(
-                <FitImage media={media}/>
+                
+                <TapGestureHandler
+                    numberOfTaps={2}
+                    onActivated={likeAnimation}
+                >   
+                <View style={{position:"relative"}}>
+                    <View>
+                        <FitImage media={media}/>
+                    </View>
+                    <Animated.View
+                        style={[styles.doubleTapIcon, style]}
+                    > 
+                        <Ionic
+                        name="heart"
+                        size={100}
+                        color="white"
+                        style={styles.shadow}
+                        />
+                    </Animated.View>
+                </View>
+                </TapGestureHandler>
+
             ))}
             </ScrollView>
             <View style={styles.actions}>
                 <View style={styles.leftActions}>
-                    <TouchableOpacity style={styles.action} activeOpacity={0.7}>
-                        <Like />
+                    <TouchableOpacity onPress={()=>{
+                        if(post.isLiked == false) {
+                            post.isLiked = true
+                        }
+                        else if(post.isLiked==true) post.isLiked = false
+                        setLike(!like)
+                    }} style={styles.action} >
+                        <AntDesign
+                            name={like ? 'heart' : 'hearto'}
+                            style={{
+                                fontSize:21,
+                                marginBottom:4,
+                                paddingRight:6,
+                                color: like ? 'red':'black',
+                                fontWeight:700
+                            }}
+                        />
                     </TouchableOpacity>
                     <TouchableOpacity style={styles.action} activeOpacity={0.7}>
                         <Comment />
@@ -51,7 +128,8 @@ function Post({post}) {
                 </TouchableOpacity>
             </View>
             <View style={styles.like}>
-                <Text style={styles.likes}>{post.likes} likes</Text>
+                <Text style={styles.likes}>
+                {like ? post.likes +1: post.likes} likes</Text>
             </View>
             <View style={styles.description}>
                 <ReadMore numberOfLines={1} seeMoreStyle={{color:'#999'}} animate={true} ellipsis={'  ...'} expandOnly={true} seeMoreText={'more'}>
@@ -74,7 +152,9 @@ function Post({post}) {
 
 export default Post;
 
+const postHeight = Dimensions.get('screen').height
 const styles = StyleSheet.create({
+    
     header:{
         flexDirection:'row',
         alignItems: 'center',
@@ -113,6 +193,11 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center'
     },
+    shadow: {
+        shadowOffset: { width: 0, height: 20 },
+        shadowOpacity: 0.3,
+        shadowRadius: 3,
+    },
     likes:{
         paddingLeft: 16,
         fontWeight:'700'
@@ -127,5 +212,11 @@ const styles = StyleSheet.create({
     descriptionName:{
         fontWeight:'700',
     },
-
+    doubleTapIcon: {
+        position: "absolute",
+        alignSelf: "center",
+        alignItems:"center",
+        justifyContent:"center",
+        height: postHeight/2
+    },
 })

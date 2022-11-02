@@ -9,14 +9,18 @@ import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 
 import Chats from "../../../data/chats"
-
+import Stories from "./Stories"
+import Status from "./Status";
+import Divider from '../../../components/shared/Divider'
 dayjs.extend(relativeTime)
 
 
 function Direct({chat}) {
   const navigation = useNavigation();
-
-  
+  // const dividerCounter = 0;
+  // const dividerCounterUp = ()=>{
+  //   dividerCounter++
+  // }
   
   return(
     <>
@@ -30,8 +34,10 @@ function Direct({chat}) {
           </TouchableOpacity>
         </View>
         <AddChat/>
-      </View>    
-      <ScrollView style={{backgroundColor:"white",paddingHorizontal:12}}>
+      </View>
+          
+      <ScrollView  style={{backgroundColor:"white",paddingHorizontal:12}}>
+        
         <View style={{alignItems:"center",flexDirection:"row",justifyContent:"space-between",height:40}}>
           <Text style={{fontWeight:"600"}}>
             Messages
@@ -47,8 +53,8 @@ function Direct({chat}) {
         </View>
          {Chats.map((direct) =>{
           return(
-          <TouchableOpacity>
-          <View key={direct.id} style={{marginTop:10,flexDirection:"row"}}>
+          <View key={direct.id} style={{marginTop:5,flexDirection:"row",alignItems:"center"}}>
+            <TouchableOpacity>
               {direct.status==true ?(
                 <LinearGradient
                   colors={['#DE0046', '#F7A34B']}
@@ -88,9 +94,10 @@ function Direct({chat}) {
                   />
                 </LinearGradient>
               
-              }     
+              }  
+            </TouchableOpacity>  
             <View style={{flexDirection:"row",justifyContent:"space-between",alignItems:"center",width:"90%"}}>
-              <View style={{paddingLeft:10}}>
+              <TouchableOpacity style={{width:"80%",paddingLeft:10}}>
                 {direct.read==false ?(
                   <View>
                     <Text style={{fontWeight:"700"}}>{direct.name}</Text>
@@ -103,13 +110,13 @@ function Direct({chat}) {
                   <View>
                     <Text style={{}}>{direct.name}</Text>
                     <View style={{flexDirection:"row",alignItems:"center"}}>
-                      <Text style={{}}>{direct.message}</Text>
+                      <Text style={{opacity:0.4}}>{direct.message}</Text>
                       <Text style={{fontSize:14, opacity:0.4}}> · {dayjs(direct.time).fromNow()}</Text>
                     </View>
                   </View>
                 }
-              </View>
-              <View style={{paddingRight:12}}>
+              </TouchableOpacity>
+              <TouchableOpacity style={{paddingRight:16}}>
                 {
                   direct.read==false ?(
                     <>
@@ -165,11 +172,11 @@ function Direct({chat}) {
                     <Picture style={{opacity:"0.7"}}/>
                   </View>
                 }
-              </View>
+                </TouchableOpacity>
             </View>
-            <View></View>
-          </View> 
-          </TouchableOpacity> )
+            
+            </View>
+           )
          })}
       </ScrollView>
     </>

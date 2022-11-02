@@ -2,6 +2,9 @@ import img1 from "../assets/Images/Riyad1.jpg"
 import img2 from "../assets/Images/Riyad2.jpg"
 import img3 from "../assets/Images/Nicaaaaaat.jpg"
 import img4 from "../assets/Images/Anime.jpg"
+import stories from "./stories"
+
+
 
 export default [
     {
@@ -22,7 +25,7 @@ export default [
         time: '2022-5-26 10:00:00',
         read: false,
         sendPhoto: true,
-        status: false
+        status: true
     },
     {
         id:2,
