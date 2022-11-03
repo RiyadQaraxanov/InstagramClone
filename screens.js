@@ -106,6 +106,7 @@ function Screens() {
         )
     };
     return(
+        <>
         <NavigationContainer independent={true}>
             <Stack.Navigator
                 screenOptions={{
@@ -120,6 +121,7 @@ function Screens() {
                 <Stack.Screen name="Direct" component={Direct}/>
             </Stack.Navigator>
         </NavigationContainer>
+        </>
     ) 
 }
 

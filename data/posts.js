@@ -12,7 +12,7 @@ export default [
         comments: 0,
         medias:[
             {
-                src: 'https://pps.whatsapp.net/v/t61.24694-24/307104919_519360440031538_4304732060133799530_n.jpg?ccb=11-4&oh=01_AdTW6iyBxfq_bsCVY7PbrSelF8LNZXPTHYr5kxYGWT7csQ&oe=6362FBBF',
+                src: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsj7ALoL1WITfo84P7mOkzZRKpTiteUg1Tcg&usqp=CAU',
                 width: 600,
                 height: 600
             }
