@@ -10,7 +10,6 @@ import AntDesign from "react-native-vector-icons/AntDesign"
 import Ionic from "react-native-vector-icons/Ionicons"
 import { TapGestureHandler } from "react-native-gesture-handler"
 import { GestureHandlerRootView } from 'react-native-gesture-handler'
-import BottomSheet, { BottomSheetRefProps } from './BottomSheet';
 
 
 
@@ -22,19 +21,7 @@ dayjs.extend(relativeTime)
 // }
 
 function Post({post}) {
-    const {height} = useWindowDimensions();
-  const bottomSheetRef = useRef();
-  const bottomSheetRef2 = useRef();
-  const bottomSheetRef3 = useRef();
-  const pressHandler = useCallback(() => {
-    bottomSheetRef.current.expand();
-  }, []);
-  const pressHandler2 = useCallback(() => {
-    bottomSheetRef2.current.expand();
-  }, []);
-  const pressHandler3 = useCallback(() => {
-    bottomSheetRef3.current.expand();
-  }, []);
+   
 
 
     //like
@@ -151,7 +138,7 @@ function Post({post}) {
                     <TouchableOpacity style={styles.action} activeOpacity={0.7}>
                         <Comment />
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.action} activeOpacity={0.7} onPress={ShareBtn}>
+                    <TouchableOpacity style={styles.action} activeOpacity={0.7}>
                         <Share />
                     </TouchableOpacity>
                     
@@ -179,25 +166,7 @@ function Post({post}) {
             <View>
                 <Text style={{opacity:0.5, fontSize:13, paddingHorizontal:16, paddingTop:5}}>{dayjs(post.date).fromNow()}</Text>
             </View>
-            <GestureHandlerRootView style={{flex: 1}}>
-      <SafeAreaView style={styles.container}>
-        {/* <Button title="Blank" onPress={() => pressHandler()} /> */}
-        {/* <Button title="Example 1" onPress={() => pressHandler2()} /> */}
-        {/* <Button title="Example 2" onPress={() => pressHandler3()} /> */}
-        <BottomSheet
-          ref={bottomSheetRef}
-          activeHeight={height * 0.5}
-          backgroundColor={'white'}
-          backDropColor={'black'}
-        />
-        <BottomSheet>
-          
-        </BottomSheet>
-        <BottomSheet>
-          
-        </BottomSheet>
-      </SafeAreaView>
-    </GestureHandlerRootView>
+            
         </View>
     )
 };
