@@ -25,6 +25,7 @@ import HeartScreen from "./screens/heart";
 import ProfileScreen from "./screens/profile";
 import Direct from "./screens/home/components/Direct"
 import Status from "./screens/home/components/Status"
+import Comments from "./components/shared/Comments";
 
 function Screens() {
    
@@ -119,6 +120,7 @@ function Screens() {
             >
                 <Stack.Screen name="Bottom" component={bottomTabScreen}/>
                 <Stack.Screen name="Direct" component={Direct}/>
+                <Stack.Screen name="Comments" component={Comments}/>
             </Stack.Navigator>
         </NavigationContainer>
         </>

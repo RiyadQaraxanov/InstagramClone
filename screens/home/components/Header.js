@@ -7,7 +7,7 @@ import {
 
 function Header(){
     const navigation = useNavigation();
-    const sendSubmit = () =>{
+    const goDirect = () =>{
         navigation.push('Direct');
     }
     return (
@@ -16,7 +16,7 @@ function Header(){
                 <Logo size={104} fill="#000"/>
                 <DropDownArrow style={styles.dropDownArrow}/>
             </View>
-            <TouchableOpacity activeOpacity={"0.7"} onPress={sendSubmit}>
+            <TouchableOpacity activeOpacity={"0.7"} onPress={goDirect}>
                 <Messenger style={styles.messenger}/>
             </TouchableOpacity>
         </View>

@@ -10,7 +10,7 @@ import AntDesign from "react-native-vector-icons/AntDesign"
 import Ionic from "react-native-vector-icons/Ionicons"
 import { TapGestureHandler } from "react-native-gesture-handler"
 import { GestureHandlerRootView } from 'react-native-gesture-handler'
-
+import { useNavigation } from "@react-navigation/native"
 
 
 dayjs.extend(relativeTime)
@@ -62,16 +62,11 @@ function Post({post}) {
 
     const [like,setLike] = useState(post.isLiked)
 
-    //Share
+    //Comment
 
-    const ShareBtn = ()=>{
-        console.log("as")
-        return(
-            <GestureHandlerRootView>
-                <ShareBtn />
-            </GestureHandlerRootView>
-            
-        )
+    const navigation = useNavigation();
+    const goComment = () =>{
+        navigation.push('Comments');
     }
 
     return(
@@ -135,7 +130,7 @@ function Post({post}) {
                             }}
                         />
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.action} activeOpacity={0.7}>
+                    <TouchableOpacity onPress={goComment} style={styles.action} activeOpacity={0.7}>
                         <Comment />
                     </TouchableOpacity>
                     <TouchableOpacity style={styles.action} activeOpacity={0.7}>
@@ -159,7 +154,7 @@ function Post({post}) {
                 </ReadMore>
             </View>
             {post.comments> 0 &&(
-                <TouchableOpacity style={{paddingTop:5,paddingHorizontal:12}} activeOpacity={0.7}>
+                <TouchableOpacity onPress={goComment} style={{paddingTop:5,paddingHorizontal:12}} activeOpacity={0.7}>
                     <Text style={{color:'#999'}}> View all {post.comments} comments</Text>
                 </TouchableOpacity>
             )}
