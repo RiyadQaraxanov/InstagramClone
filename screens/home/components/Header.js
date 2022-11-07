@@ -12,10 +12,10 @@ function Header(){
     }
     return (
         <View style={styles.header}>
-            <View style={styles.headerLogo}>
+            <TouchableOpacity activeOpacity={0.7} style={styles.headerLogo}>
                 <Logo size={104} fill="#000"/>
                 <DropDownArrow style={styles.dropDownArrow}/>
-            </View>
+            </TouchableOpacity>
             <TouchableOpacity activeOpacity={"0.7"} onPress={goDirect}>
                 <Messenger style={styles.messenger}/>
             </TouchableOpacity>

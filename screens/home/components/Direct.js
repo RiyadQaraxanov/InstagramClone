@@ -36,7 +36,7 @@ function Direct({chat}) {
         <AddChat/>
       </View>
           
-      <ScrollView  style={{backgroundColor:"white",paddingHorizontal:12}}>
+      <ScrollView  style={{backgroundColor:"white",paddingHorizontal:12,height:"100%"}}>
         
         <View style={{alignItems:"center",flexDirection:"row",justifyContent:"space-between",height:40}}>
           <Text style={{fontWeight:"600"}}>
