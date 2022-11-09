@@ -1,24 +1,44 @@
-import { StyleSheet,View,TouchableOpacity } from "react-native";
+import { StyleSheet,View,TouchableOpacity,Modal,Text } from "react-native";
 import { useNavigation } from "@react-navigation/native"
+import { useState } from "react";
+import LogoModal from "./LogoModal";
 
 import {
     Logo,DropDownArrow,Messenger
 } from "../../../icons";
 
 function Header(){
+    const [isModal,setIsModal] = useState(false)
+    const changeModalVisible = (bool) =>{
+        setIsModal(bool)
+    }
+
     const navigation = useNavigation();
     const goDirect = () =>{
         navigation.push('Direct');
     }
     return (
         <View style={styles.header}>
-            <TouchableOpacity activeOpacity={0.7} style={styles.headerLogo}>
+            <TouchableOpacity
+                onPress={()=>{
+                    setIsModal(true)
+                    }} activeOpacity={0.7} style={styles.headerLogo}>
                 <Logo size={104} fill="#000"/>
                 <DropDownArrow style={styles.dropDownArrow}/>
             </TouchableOpacity>
             <TouchableOpacity activeOpacity={"0.7"} onPress={goDirect}>
                 <Messenger style={styles.messenger}/>
             </TouchableOpacity>
+            <Modal
+                transparent={true}
+                animationType="fade"
+                visible={isModal}
+                nRequestClose={()=> changeModalVisible(false)}
+            >
+                <LogoModal
+                    changeModalVisible={changeModalVisible}
+                />
+            </Modal>
         </View>
     )
 }
