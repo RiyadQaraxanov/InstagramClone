@@ -1,7 +1,7 @@
 import { StyleSheet,View,TouchableOpacity,Modal,Text } from "react-native";
 import { useNavigation } from "@react-navigation/native"
 import { useState } from "react";
-import LogoModal from "./LogoModal";
+import LogoModal from "./../modals/LogoModal"
 
 import {
     Logo,DropDownArrow,Messenger

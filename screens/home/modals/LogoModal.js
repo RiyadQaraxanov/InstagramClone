@@ -21,7 +21,7 @@ const LogoModal = (props) => {
             style={{
                 width:160,
                 height: 90,
-                marginTop: 65,
+                marginTop: 90,
                 backgroundColor:"#fff",
                 borderRadius:10,
                 borderWidth:1,
@@ -34,7 +34,12 @@ const LogoModal = (props) => {
             style={{position:"absolute",width:WIDTH,height:HEIGHT,zIndex:-1}}
             onPress={()=> {closeModal(false)}}
         >
-
+            <TouchableOpacity>
+                <Text>Following</Text>
+            </TouchableOpacity>
+            <TouchableOpacity>
+                <Text>Favorites</Text>
+            </TouchableOpacity>
         </TouchableOpacity>
     </View>
   )
