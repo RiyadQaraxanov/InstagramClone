@@ -26,6 +26,8 @@ import ProfileScreen from "./screens/profile";
 import Direct from "./screens/home/components/Direct"
 import Status from "./screens/home/components/Status"
 import Comments from "./components/shared/Comments";
+import ChatScreen from "./components/shared/ChatScreen";
+
 
 function Screens() {
    
@@ -121,6 +123,7 @@ function Screens() {
                 <Stack.Screen name="Bottom" component={bottomTabScreen}/>
                 <Stack.Screen name="Direct" component={Direct}/>
                 <Stack.Screen name="Comments" component={Comments}/>
+                <Stack.Screen name="ChatScreen" component={ChatScreen}/>
             </Stack.Navigator>
         </NavigationContainer>
         </>
