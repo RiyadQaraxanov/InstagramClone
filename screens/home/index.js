@@ -1,4 +1,4 @@
-import {View, Text, StyleSheet, ScrollView } from "react-native";
+import {View, Text, StyleSheet, ScrollView, SafeAreaView } from "react-native";
 import Header from "./components/Header";
 import Stories from "./components/Stories";
 import posts from "../../data/posts";
@@ -9,14 +9,14 @@ import Divider from "../../components/shared/Divider";
 
 function Home(){
     return(
-        <View style={styles.container}>
+        <SafeAreaView style={styles.container}>
              <Header />
              <ScrollView stickyHeaderIndices={[1]} showsVerticalScrollIndicator={false}>
                 <Stories />
                 <Divider />
                 {posts.map(post => <Post key={post.id} post={post}/>)}
              </ScrollView>
-        </View>
+        </SafeAreaView>
     )
 }
 

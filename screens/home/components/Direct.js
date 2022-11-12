@@ -21,9 +21,9 @@ function Direct({chat}) {
   // const dividerCounterUp = ()=>{
   //   dividerCounter++
   // }
-    const goChat = () =>{
-        navigation.push('ChatScreen');
-    }
+  const goChat = (userName) =>{
+      navigation.push('ChatScreen',{name:userName.name});
+  }
   return(
     <>
       <View style={{flexDirection:"row",justifyContent:"space-between",alignItems:"center",height:40,paddingHorizontal:16,backgroundColor:"white"}}>
@@ -99,7 +99,9 @@ function Direct({chat}) {
               }  
             </TouchableOpacity>  
             <View style={{flexDirection:"row",justifyContent:"space-between",alignItems:"center",width:"90%"}}>
-              <TouchableOpacity style={{width:"80%",paddingLeft:10}} onPress={goChat}>
+              <TouchableOpacity style={{width:"80%",paddingLeft:10}} onPress={()=>
+                navigation.push('ChatScreen',{name:direct.name})
+                }>
                 {direct.read==false ?(
                   <View>
                     <Text style={{fontWeight:"700"}}>{direct.name}</Text>
