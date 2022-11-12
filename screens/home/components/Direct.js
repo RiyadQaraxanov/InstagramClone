@@ -1,6 +1,6 @@
 import { View, Text, TouchableOpacity, ScrollView, TextInput, Image } from 'react-native'
 import React from 'react'
-import {AddChat,BackArrow,Search,Play,Picture} from './../../../icons'
+import {AddChat,BackArrow,Search,Play,Picture,NewMessages} from './../../../icons'
 import User from "./../../../data/user"
 import Screens from '../../../screens'
 import { useNavigation } from "@react-navigation/native"
@@ -22,7 +22,7 @@ function Direct({chat}) {
   //   dividerCounter++
   // }
   const goChat = (userName) =>{
-      navigation.push('ChatScreen',{name:userName.name});
+      navigation.push('ChatScreen',{name:userName.name,avatar:userName.avatar});
   }
   return(
     <>
@@ -35,7 +35,9 @@ function Direct({chat}) {
             <Text style={{fontWeight:"700",fontSize:18}}>{User[0].name}</Text>
           </TouchableOpacity>
         </View>
-        <AddChat/>
+        <TouchableOpacity activeOpacity={0.7} onPress={()=> navigation.push("NewMessage")}>
+          <NewMessages/>
+        </TouchableOpacity>
       </View>
           
       <ScrollView  style={{backgroundColor:"white",paddingHorizontal:12,height:"100%"}}>
@@ -100,7 +102,7 @@ function Direct({chat}) {
             </TouchableOpacity>  
             <View style={{flexDirection:"row",justifyContent:"space-between",alignItems:"center",width:"90%"}}>
               <TouchableOpacity style={{width:"80%",paddingLeft:10}} onPress={()=>
-                navigation.push('ChatScreen',{name:direct.name})
+                navigation.push('ChatScreen',{name:direct.name,avatar:direct.avatar})
                 }>
                 {direct.read==false ?(
                   <View>

@@ -27,6 +27,7 @@ import Direct from "./screens/home/components/Direct"
 import Status from "./screens/home/components/Status"
 import Comments from "./components/shared/Comments";
 import ChatScreen from "./components/shared/ChatScreen";
+import NewMessage from "./screens/home/components/NewMessage";
 
 
 function Screens() {
@@ -117,13 +118,14 @@ function Screens() {
                     headerShown: false,
                     tabBarActiveTintColor:'#000',
                     tabBarInactiveTintColor:'#262626',
-                    
+
                 }}
             >
                 <Stack.Screen name="Bottom" component={bottomTabScreen}/>
                 <Stack.Screen name="Direct" component={Direct}/>
                 <Stack.Screen name="Comments" component={Comments}/>
                 <Stack.Screen name="ChatScreen" component={ChatScreen}/>
+                <Stack.Screen name="NewMessage" component={NewMessage}/>
             </Stack.Navigator>
         </NavigationContainer>
         </>
