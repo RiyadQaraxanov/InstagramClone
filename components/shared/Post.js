@@ -65,8 +65,14 @@ function Post({post}) {
     //Comment
 
     const navigation = useNavigation();
-    const goComment = () =>{
-        navigation.push('Comments');
+    const goComment = (user1) =>{
+        navigation.push('Comments',{
+            userAvatar:user1.user.avatar,
+            userName:user1.user.name,
+            commentDate:user1.date,
+            description:user1.description,
+            comments:user1.comments
+        });
     }
 
     return(
@@ -130,7 +136,10 @@ function Post({post}) {
                             }}
                         />
                     </TouchableOpacity>
-                    <TouchableOpacity onPress={goComment} style={styles.action} activeOpacity={0.7}>
+                    <TouchableOpacity onPress={()=>
+                        goComment(post)
+                        // navigation.push('Comments',{userAvatar:post.user.avatar,userName:post.user.name})
+                        } style={styles.action} activeOpacity={0.7}>
                         <Comment />
                     </TouchableOpacity>
                     <TouchableOpacity style={styles.action} activeOpacity={0.7}>
@@ -154,7 +163,7 @@ function Post({post}) {
                 </ReadMore>
             </View>
             {post.comments> 0 &&(
-                <TouchableOpacity onPress={goComment} style={{paddingTop:5,paddingHorizontal:12}} activeOpacity={0.7}>
+                <TouchableOpacity onPress={()=>goComment(post)} style={{paddingTop:5,paddingHorizontal:12}} activeOpacity={0.7}>
                     <Text style={{color:'#999'}}> View all {post.comments} comments</Text>
                 </TouchableOpacity>
             )}

@@ -101,8 +101,9 @@ function Direct({chat}) {
               }  
             </TouchableOpacity>  
             <View style={{flexDirection:"row",justifyContent:"space-between",alignItems:"center",width:"90%"}}>
-              <TouchableOpacity style={{width:"80%",paddingLeft:10}} onPress={()=>
-                navigation.push('ChatScreen',{name:direct.name,avatar:direct.avatar})
+              <TouchableOpacity style={{width:"80%",paddingLeft:10}} onPress={()=>goChat(direct)
+                // ()=>
+                // navigation.push('ChatScreen',{name:direct.name,avatar:direct.avatar})
                 }>
                 {direct.read==false ?(
                   <View>
