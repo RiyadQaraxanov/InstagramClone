@@ -1,6 +1,6 @@
-import { View, Text, Dimensions } from 'react-native'
+import { View, Text, Dimensions, TouchableOpacity, Image } from 'react-native'
 import React from 'react'
-
+import posts from '../../../data/posts'
 
 
 const Body = () => {
@@ -8,49 +8,32 @@ const Body = () => {
     const WIDTH = Dimensions.get("window").width
 
     return (
-        <View>
-            <View style={{flexDirection:"row"}}>
-                <View>
-                    <View style={{backgroundColor:"red",width:WIDTH/3,height:WIDTH/3,borderWidth:0.5}}></View>
-                    <View style={{backgroundColor:"red",width:WIDTH/3,height:WIDTH/3,borderWidth:0.5}}></View>
-                </View>
-                <View>
-                    <View style={{backgroundColor:"red",width:WIDTH/3,height:WIDTH/3,borderWidth:0.5}}></View>
-                    <View style={{backgroundColor:"red",width:WIDTH/3,height:WIDTH/3,borderWidth:0.5}}></View>
-                </View>
-                <View style={{backgroundColor:"red",width:WIDTH/3,height:WIDTH/1.5,borderWidth:0.5}}></View>
-            </View>
-            <View style={{flexDirection:"row"}}>
-                <View style={{backgroundColor:"red",width:WIDTH/3,height:WIDTH/1.5,borderWidth:0.5}}></View>
-                <View>
-                    <View style={{backgroundColor:"red",width:WIDTH/3,height:WIDTH/3,borderWidth:0.5}}></View>
-                    <View style={{backgroundColor:"red",width:WIDTH/3,height:WIDTH/3,borderWidth:0.5}}></View>
-                </View>
-                <View>
-                    <View style={{backgroundColor:"red",width:WIDTH/3,height:WIDTH/3,borderWidth:0.5}}></View>
-                    <View style={{backgroundColor:"red",width:WIDTH/3,height:WIDTH/3,borderWidth:0.5}}></View>
-                </View>
-                <View>
-                    <View style={{backgroundColor:"red",width:WIDTH/3,height:WIDTH/3,borderWidth:0.5}}></View>
-                    <View style={{backgroundColor:"red",width:WIDTH/3,height:WIDTH/3,borderWidth:0.5}}></View>
-                </View>
-                <View>
-                    <View style={{backgroundColor:"red",width:WIDTH/3,height:WIDTH/3,borderWidth:0.5}}></View>
-                    <View style={{backgroundColor:"red",width:WIDTH/3,height:WIDTH/3,borderWidth:0.5}}></View>
-                </View>
-                <View style={{backgroundColor:"red",width:WIDTH/3,height:WIDTH/1.5,borderWidth:0.5}}></View>
-            </View>
-            <View style={{flexDirection:"row"}}>
-                <View style={{backgroundColor:"red",width:WIDTH/3,height:WIDTH/1.5,borderWidth:0.5}}></View>
-                <View>
-                    <View style={{backgroundColor:"red",width:WIDTH/3,height:WIDTH/3,borderWidth:0.5}}></View>
-                    <View style={{backgroundColor:"red",width:WIDTH/3,height:WIDTH/3,borderWidth:0.5}}></View>
-                </View>
-                <View>
-                    <View style={{backgroundColor:"red",width:WIDTH/3,height:WIDTH/3,borderWidth:0.5}}></View>
-                    <View style={{backgroundColor:"red",width:WIDTH/3,height:WIDTH/3,borderWidth:0.5}}></View>
-                </View>
-            </View>
+        <View style={{flexDirection:"row",flexWrap:"wrap",justifyContent:"space-between"}}>
+            {posts.map((data,index)=>{
+                return(
+                    <>
+                        {/* {data.id===0?(
+                            <View> */}
+                                {data.medias.map((imageData,imgIndex)=>{
+                                    return(
+                                        <TouchableOpacity>
+                                            <Image source={
+                                                {uri:imageData.src}
+                                            } 
+                                            style={{
+                                                width:WIDTH/3,
+                                                height:WIDTH/3,
+                                                borderWidth:1,
+                                                borderColor:"white"
+                                            }} />
+                                        </TouchableOpacity>
+                                    )
+                                })}
+                            {/* </View>
+                        ):null} */}
+                    </>
+                )
+            })}
         </View>
     )
 }
