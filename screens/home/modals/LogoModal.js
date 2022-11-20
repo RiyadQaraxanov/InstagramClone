@@ -25,22 +25,24 @@ const LogoModal = (props) => {
                 backgroundColor:"#fff",
                 borderRadius:10,
                 borderWidth:1,
-                marginLeft:16
+                marginLeft:16,
+                position:"relative"
             }}
         >
-            <Text></Text>
-        </View>
-        <TouchableOpacity 
+            <TouchableOpacity 
             style={{position:"absolute",width:WIDTH,height:HEIGHT,zIndex:-1}}
             onPress={()=> {closeModal(false)}}
         >
-            <TouchableOpacity>
+            <TouchableOpacity style={{height:45,width:160, alignItems:"center", justifyContent:"center"}}>
                 <Text>Following</Text>
             </TouchableOpacity>
-            <TouchableOpacity>
+            <TouchableOpacity style={{height:45,width:160, alignItems:"center", justifyContent:"center"}}>
                 <Text>Favorites</Text>
             </TouchableOpacity>
         </TouchableOpacity>
+
+        </View>
+        
     </View>
   )
 }
